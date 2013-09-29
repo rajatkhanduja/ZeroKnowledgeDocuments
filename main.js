@@ -20,3 +20,9 @@ $('#newDir').click(function(){
 $('#createFile').click(function(){
   createFile(client, pathString(), $('#newFileName').val(), $('#fileContent').val(), $('#key').val());
 });
+
+$('#reloadDir').click(function(){
+  console.log("Reloading...");
+  dirResults[pathString()] = null;
+  listDirInHTML(client, pathString());
+});
