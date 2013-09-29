@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css'  href='bootstrap/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <br /> <br /> <br /> <br />
+    <center id='loadingInfo'>Loading...</center>
+    <div class="row-fluid">
+      <div class="span3"> 
+      </div>
+      <div class="span7">
+        <a href='#' id='parentDirectory'>Parent</a>
+        <ul class="breadcrumb" id='navigation'>
+          <li>Home<span class="divider">/</span></li>
+        </ul>
+        <div id="newDir"><input id="newDirName" /><a href='#'>Create Directory</a></div>
+        <table class="table" id="file_browser">
+          
+        </table>
+        <input id="newFileName" placeholder='File name' />
+        <input id="key" type='password' placeholder='Encryption password' />
+        <textarea id="fileContent"> </textarea>
+        <input type="submit" id="createFile" />
+      </div>
+      <div class="span2">
+      </div>
+    </div>
+
+    <!--
+    <form action="#">
+      <input id='title' placeholder='Title' />
+      <input id='passcode' placeholder='Enter Passcode here' />
+      <textarea id='text'> </textarea>
+      <input type='button' id='submitButton' value='Encrypt and send' />
+    </form>-->
+
+    <!-- Loading scripts at the end -->
+<!--    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script> -->
+    <script type="application/javascript" src="jquery-1.6.2.min.js"></script>
+    <script type="application/javascript" src="sjcl.js"></script>
+    <script type="application/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.1/dropbox.min.js"> </script>
+    <script type="application/javascript" src="utilityFunctions.js"></script>
+    <script type='application/javascript' src="main.js"> </script>
+  </body>
+</html>
