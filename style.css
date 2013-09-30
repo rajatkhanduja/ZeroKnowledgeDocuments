@@ -3,6 +3,12 @@
   float:right;
 }
 
+#parentDirectory{
+  position:inline;
+  float:right;
+}
+
+
 #loadingInfo{
   position: absolute;
   top:50%;
