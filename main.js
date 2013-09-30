@@ -15,7 +15,22 @@ $("#submitButton").click(function(){
 listDirInHTML(client, "/");
 $('#parentDirectory').hide();
 $('#newDir').click(function(){
-  createDirectory(client, pathString(), $('#newDirName').val());
+  $.msgBox({
+    type:"prompt", 
+    title:"Directory name", 
+    inputs:[{header:"Name", type:"text"}], 
+    buttons:[{value:"OK"}, {value:"Cancel"}], 
+    success: function (result, values) {
+      if (result == "OK"){
+        if(values[0].value == null || values[0].value == ""){
+          displayError("Need a directory name");
+        }
+        else{
+          createDirectory(client, pathString(), values[0].value);
+        }
+      }
+    }
+  });
 });
 $('#createFile').click(function(){
   createFile(client, pathString(), $('#newFileName').val(), $('#fileContent').val(), $('#key').val());

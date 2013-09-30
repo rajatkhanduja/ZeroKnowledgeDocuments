@@ -1,6 +1,15 @@
 var pathElements = [];
 var dirResults = {};
 
+var displayError = function(error){
+  $.msgBox({
+    title: "Ooops",
+    content: error,
+    type: "error",
+    buttons: [{ value: "Ok" }]
+  });
+}
+
 var showError = function(error){
   // Function to deal with the errors
 };
