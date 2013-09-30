@@ -1,4 +1,4 @@
-#newDir{  
+.newButton{  
   position:inline;
   float:right;
 }
@@ -13,4 +13,8 @@
   position: absolute;
   top:50%;
   left:50%;
+}
+
+#tableContainer{
+  min-height:500px;
 }

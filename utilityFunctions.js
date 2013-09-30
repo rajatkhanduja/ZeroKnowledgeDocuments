@@ -110,24 +110,6 @@ var listDirInHTML = function(client, path){
   listDir(client, path, addFileDetailsToTable);
 }
 
-var storeEntry = function(dropboxClient){
-  var data = $("#text").val();
-  var password = $("#passcode").val();
-  var encryptedInfo = sjcl.encrypt(password, data);
-  console.log(encryptedInfo);
-  var decryptedData = sjcl.decrypt(password, encryptedInfo);
-  console.log(decryptedData);
-  var fileName = $('#title').val();
-  dropboxClient.writeFile(fileName, encryptedInfo, function(error, stat){
-    if (error){
-      return showError(error);
-    }
-
-    console.log("File saved as revision " + stat.revisionTag);
-    console.log(stat);
-  });
-}
-
 var addPathElement = function(subDirectory, client){
   li = $(document.createElement("li"));
   li.html(subDirectory + "<span class='divider'>/</span>");
@@ -216,6 +198,15 @@ var createDirectory = function(client, parentDir, dirName){
 var createFile = function(client, path, fileName, content, key){
   var encryptedContent = sjcl.encrypt(key, content);
   client.writeFile(path + "/" + fileName, encryptedContent, function(error, result){
-    console.log(result);
+    if (error != null){
+      return showError(error);
+    }
+    else{
+      $.msgBox({
+        type:"info", 
+        title:"Success",
+        content: "'" + fileName + "' has been saved. Please remember your password : " + key
+      });
+    }
   });
 }

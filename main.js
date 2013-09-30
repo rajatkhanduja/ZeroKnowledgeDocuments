@@ -8,12 +8,12 @@ if (!client.isAuthenticated()){
     console.log(client);
   });
 }
-$("#submitButton").click(function(){
-  storeEntry(client);
-});
 
 listDirInHTML(client, "/");
 $('#parentDirectory').hide();
+$('#newFile').click(function(){
+  $('#newFileName').focus();
+});
 $('#newDir').click(function(){
   $.msgBox({
     type:"prompt", 
