@@ -37,8 +37,15 @@
           <!-- file browser -->
           <div class="row-fluid">
             <div id="tableContainer" class="margin-top">
-              <table class="table table-hover" id="file_browser">
-
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Modified</th>
+                  </tr>
+                </thead>
+                <tbody id="file_browser"></tbody>
               </table>
             </div>
           </div>

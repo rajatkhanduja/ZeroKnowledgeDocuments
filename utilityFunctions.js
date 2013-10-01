@@ -106,7 +106,6 @@ var addRowToFileBrowser = function (elements) {
 
 var listDirInHTML = function (client, path) {
   $("#file_browser").children().remove();
-  addRowToFileBrowser(["<b>Name</b>", "<b>Type</b>", "<b>Modified Date</b>"])
   inLoadingState();
   listDir(client, path, addFileDetailsToTable);
 }
