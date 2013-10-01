@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -21,22 +22,22 @@
         <button class='btn-success' id='reloadDir'><i class='icon-refresh'></i> Refresh </button> 
         <button id="newFile" class='button newButton'><i class='icon-plus'></i> Add New File</button> &nbsp;&nbsp;
         <button id="newDir" class='button newButton'><i class='icon-plus'></i> Add New folder</button>
-        <div id='tableContainer'>
           <table class="table" id="file_browser">
             
           </table>
+        <hr />
+        <hr />
+        <div class='row'>
+          <div class='span5 offset2' id='tableContainer'>
+            <h3> Add a new encrypted file </h3>
+            <input id='newFileName' placeholder='Title' cols=70 /> <br />
+            <input id='key' type="password" placeholder='Enter Password here' /> <br />
+            <input id='verify_key' type="password" placeholder='Enter password again' /><br />
+            <textarea id='fileContent' cols=1200> </textarea> <br />
+            <input class='btn-large btn-success' type='button' id='createFile' value='Save' />
+            <input type='reset' class='btn-large btn-danger' id='resetFormButton' value='Clear' />
+          </div>
         </div>
-        <hr />
-        <hr />
-        <h3> Add a new encrypted file </h3>
-          <input id='newFileName' placeholder='Title' cols=70 /> <br />
-          <input id='key' type="password" placeholder='Enter Password here' /> <br />
-          <input id='verify_key' type="password" placeholder='Enter password again' /><br />
-          <textarea id='fileContent' cols=1200> </textarea> <br />
-          <input class='btn-large btn-success' type='button' id='createFile' value='Save' />
-          <input type='reset' class='btn-large btn-danger' id='resetFormButton' value='Clear' />
-      </div>
-      <div class="span2">
       </div>
     </div>
 

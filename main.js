@@ -36,6 +36,14 @@ $('#createFile').click(function(){
   createFile(client, pathString(), $('#newFileName').val(), $('#fileContent').val(), $('#key').val());
 });
 
+$('#resetFormButton').click(function(){
+    $('#newFileName').val("");
+    $('#key').val("");
+    $('#verify_key').val("");
+    $('fileContent').val("");
+});
+
+
 $('#reloadDir').click(function(){
   console.log("Reloading...");
   dirResults[pathString()] = null;
