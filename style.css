@@ -1,20 +1,13 @@
-.newButton{  
-  position:inline;
-  float:right;
+.inline {
+  position: inline;
 }
 
-#parentDirectory{
-  position:inline;
-  float:right;
-}
-
-
-#loadingInfo{
+#loadingInfo {
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
 }
 
-#tableContainer{
-  min-height:500px;
+.margin-top {
+  margin-top: 20px;
 }
