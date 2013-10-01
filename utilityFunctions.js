@@ -2,15 +2,13 @@ var pathElements = [];
 var dirResults = {};
 
 var displayError = function (error) {
-  $.msgBox({
-    "title": "Ooops",
-    "content": error,
-    "type": "error",
-    "buttons": [{ value: "Ok" }]
+  Modal.error({
+    title: "Error",
+    message: error
   });
 }
 
-var showError = function (error) {
+var displayDropboxError = function (error) {
   switch (error.status) {
   case Dropbox.ApiError.INVALID_TOKEN:
     // If you're using dropbox.js, the only cause behind this error is that
@@ -72,7 +70,7 @@ console.log(dirResults);
     operateOnList(dirResults[path], func);
     doneLoading();
   }
-  else{
+  else {
     client.readdir(path, function (error, results, dirStat, contentStats) {
       // Check for error.
       for (var i = 0; i < results.length;  i++) {
@@ -143,7 +141,7 @@ var addFileDetailsToTable = function (client, file) {
       folderClicked(client, file.path);
     });
   }
-  else{
+  else {
     nameElement.click(function () {
       fileClicked(client, file.path);
     });
@@ -184,10 +182,10 @@ var removePathElement = function (client) {
 
 var createDirectory = function (client, parentDir, dirName) {
   client.mkdir(parentDir + "/" + dirName, function (error, result) {
-    if (error !== null) {
+    if (error) {
       displayError($.parseJSON(error.responseText).error);
     }
-    else{
+    else {
       // Clear the result already stored.
       dirResults[parentDir] = null;
       listDirInHTML(client, parentDir);
@@ -198,14 +196,13 @@ var createDirectory = function (client, parentDir, dirName) {
 var createFile = function (client, path, fileName, content, key) {
   var encryptedContent = sjcl.encrypt(key, content);
   client.writeFile(path + "/" + fileName, encryptedContent, function (error, result) {
-    if (error !== null) {
-      return showError(error);
+    if (error) {
+      displayDropboxError(error);
     }
-    else{
-      $.msgBox({
-        "type": "info",
-        "title": "Success",
-        "content": "'" + fileName + "' has been saved. Please remember your password: " + key
+    else {
+      Modal.info({
+        title: "File saved",
+        message: "'" + fileName + "' has been saved. Please remember your password: " + key
       });
     }
   });

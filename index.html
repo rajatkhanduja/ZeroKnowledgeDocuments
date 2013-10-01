@@ -6,7 +6,6 @@
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css"  href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css"  href="style.css" />
-    <link rel="stylesheet" type="text/css"  href="msgBoxLight.css" />
   </head>
   <body>
     <div class="container-fluid">
@@ -61,6 +60,7 @@
                   <input type="text" id="newFileName" class="span8" maxlength="70" />
                 </div>
               </div>
+
               <!-- password -->
               <div class="control-group">
                 <label class="control-label" for="key">Password:</label>
@@ -68,6 +68,7 @@
                   <input type="password" id="key" class="span8" />
                 </div>
               </div>
+
               <!-- password confirmation -->
               <div class="control-group">
                 <label class="control-label" for="verify_key">Password confirmation:</label>
@@ -75,6 +76,7 @@
                   <input type="password" id="verify_key" class="span8" />
                 </div>
               </div>
+
               <!-- file content -->
               <div class="control-group">
                 <label class="control-label" for="fileContent">File content:</label>
@@ -95,11 +97,18 @@
 
 
     <!-- Loading scripts at the end -->
-<!--    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script> -->
-    <script type="application/javascript" src="jquery-1.6.2.min.js"></script>
-    <script type="application/javascript" src="jquery.msgBox.js"></script>
+    <!-- ui libs -->
+    <script type="application/javascript" src="underscore-min.js"></script>
+    <script type="application/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- other libs -->
     <script type="application/javascript" src="sjcl.js"></script>
     <script type="application/javascript" src="dropbox.js"> </script>
+
+    <!-- our code -->
+    <script type="application/javascript" src="tpl.js"></script>
+    <script type="application/javascript" src="modal.js"></script>
     <script type="application/javascript" src="utilityFunctions.js"></script>
     <script type="application/javascript" src="main.js"> </script>
   </body>

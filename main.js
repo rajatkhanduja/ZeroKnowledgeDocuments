@@ -19,19 +19,17 @@ $('#newFile').click(function () {
 });
 
 $('#newDir').click(function () {
-  $.msgBox({
-    "type": "prompt",
-    "title": "Directory name",
-    "inputs": [{header:"Name", type:"text"}],
-    "buttons": [{value:"OK"}, {value:"Cancel"}],
-    "success": function (result, values) {
-      if (result === "OK") {
-        if (values[0].value === null || values[0].value === "") {
-          displayError("Need a directory name");
-        }
-        else {
-          createDirectory(client, pathString(), values[0].value);
-        }
+  Modal.prompt({
+    title: "Create directory",
+    optional: {
+      affirmative_label: "Create"
+    },
+    success: function (value) {
+      if (value === null || value === "") {
+        displayError("Need a directory name");
+      }
+      else {
+        createDirectory(client, pathString(), value);
       }
     }
   });
