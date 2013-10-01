@@ -1,53 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel='stylesheet' type='text/css'  href='bootstrap/css/bootstrap.min.css'>
-    <link rel='stylesheet' type='text/css'  href='style.css'>
-    <link rel='stylesheet' type='text/css'  href='msgBoxLight.css'>
+    <title>Zero Knowledge Documents</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css"  href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"  href="style.css" />
   </head>
   <body>
-    <br /> <br /> <br /> <br />
-    <img id='loadingInfo' src='images/ajax-loader.gif'  />
-    <div class="row-fluid">
-      <div class="span3"> 
-      </div>
-      <div class="span7">
-        <ul class="breadcrumb" id='navigation'>
-          <button class='btn-small btn-info' id='parentDirectory'><i class='icon-arrow-up'></i></button>
-          <li>Home<span class="divider">/</span></li>
-        </ul>
+    <div class="container-fluid">
+      <img id="loadingInfo" src="images/ajax-loader.gif" />
+      <div class="row-fluid">
+        <div class="span6 offset3">
+          <div class="page-header">
+            <h1>Zero Knowledge Documents</h1>
+          </div>
 
-        <button class='btn-success' id='reloadDir'><i class='icon-refresh'></i> Refresh </button> 
-        <button id="newFile" class='button newButton'><i class='icon-plus'></i> Add New File</button> &nbsp;&nbsp;
-        <button id="newDir" class='button newButton'><i class='icon-plus'></i> Add New folder</button>
-        <div id='tableContainer'>
-          <table class="table" id="file_browser">
-            
-          </table>
+          <!-- breadcrumbs -->
+          <div class="row-fluid">
+            <ul class="breadcrumb" id="navigation">
+              <li class="pull-right inline"><button class="btn btn-small pull-right" id="parentDirectory"><i class="icon-arrow-up"></i></button></li>
+              <li>Home<span class="divider">/</span></li>
+            </ul>
+          </div>
+
+          <!-- controls -->
+          <div class="row-fluid">
+            <button class="btn" id="reloadDir"><i class="icon-refresh"></i> Refresh </button>
+            <div class="btn-group pull-right">
+              <button id="newFile" class="btn"><i class="icon-plus"></i> Add New File</button>
+              <button id="newDir" class="btn"><i class="icon-plus"></i> Add New folder</button>
+            </div>
+          </div>
+
+          <!-- file browser -->
+          <div class="row-fluid">
+            <div id="tableContainer" class="margin-top">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Modified</th>
+                  </tr>
+                </thead>
+                <tbody id="file_browser"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- add file -->
+          <form class="form-horizontal">
+            <fieldset>
+              <legend>Add a new encrypted file</legend>
+              <!-- file name -->
+              <div class="control-group">
+                <label class="control-label" for="newFileName">Filename:</label>
+                <div class="controls">
+                  <input type="text" id="newFileName" class="span8" maxlength="70" />
+                </div>
+              </div>
+
+              <!-- password -->
+              <div class="control-group">
+                <label class="control-label" for="key">Password:</label>
+                <div class="controls">
+                  <input type="password" id="key" class="span8" />
+                </div>
+              </div>
+
+              <!-- password confirmation -->
+              <div class="control-group">
+                <label class="control-label" for="verify_key">Password confirmation:</label>
+                <div class="controls">
+                  <input type="password" id="verify_key" class="span8" />
+                </div>
+              </div>
+
+              <!-- file content -->
+              <div class="control-group">
+                <label class="control-label" for="fileContent">File content:</label>
+                <div class="controls">
+                  <textarea id="fileContent" class="span8" rows="10"></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <input type="button" id="createFile" class="btn btn-large btn-primary" value="Save" />
+                <input type="reset" id="resetFormButton" class="btn btn-large btn-danger" value="Clear" />
+              </div>
+            </fieldset>
+          </form>
         </div>
-        <hr />
-        <hr />
-        <h3> Add a new encrypted file </h3>
-          <input id='newFileName' placeholder='Title' cols=70 /> <br />
-          <input id='key' type="password" placeholder='Enter Password here' /> <br />
-          <input id='verify_key' type="password" placeholder='Enter password again' /><br />
-          <textarea id='fileContent' cols=1200> </textarea> <br />
-          <input class='btn-large btn-success' type='button' id='createFile' value='Save' />
-          <input type='reset' class='btn-large btn-danger' id='resetFormButton' value='Clear' />
-      </div>
-      <div class="span2">
       </div>
     </div>
 
 
     <!-- Loading scripts at the end -->
-<!--    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script> -->
-    <script type="application/javascript" src="jquery-1.6.2.min.js"></script>
-    <script type="application/javascript" src="jquery.msgBox.js"></script>
+    <!-- ui libs -->
+    <script type="application/javascript" src="underscore-min.js"></script>
+    <script type="application/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- other libs -->
     <script type="application/javascript" src="sjcl.js"></script>
     <script type="application/javascript" src="dropbox.js"> </script>
+
+    <!-- our code -->
+    <script type="application/javascript" src="tpl.js"></script>
+    <script type="application/javascript" src="modal.js"></script>
     <script type="application/javascript" src="utilityFunctions.js"></script>
-    <script type='application/javascript' src="main.js"> </script>
+    <script type="application/javascript" src="main.js"> </script>
   </body>
 </html>
