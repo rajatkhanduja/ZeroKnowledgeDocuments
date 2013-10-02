@@ -41,6 +41,6 @@ $('#createFile').click(function () {
 
 $('#reloadDir').click(function () {
   console.log("Reloading...");
-  dirResults[pathString()] = null;
+  delete dirResults[pathString()];
   listDirInHTML(client, pathString());
 });
