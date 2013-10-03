@@ -14,9 +14,17 @@ if (! client.isAuthenticated()) {
 listDirInHTML(client, "/");
 $('#parentDirectory').hide();
 
+
 $('#newFile').click(function () {
-  $('#newFileName').focus();
+  resetEditor($('#newFileName'), $('#fileContent'));
+  $('.zen-editor').show();
+  $('.container-fluid').hide();
 });
+
+$('#closeButton').click(function(){
+  resetEditor($('#newFileName'), $('#fileContent'));
+  $('.zen-editor').hide(); 
+  $('.container-fluid').show();});
 
 $('#newDir').click(function () {
   Modal.prompt({
@@ -35,8 +43,8 @@ $('#newDir').click(function () {
   });
 });
 
-$('#createFile').click(function () {
-  createFile(client, pathString(), $('#newFileName').val(), $('#fileContent').val(), $('#key').val());
+$('#saveFileButton').click(function () {
+  createFile(client, pathString(), $('#newFileName').text(), $('#fileContent').html(), $('#key').val());
 });
 
 $('#reloadDir').click(function () {

@@ -6,7 +6,17 @@
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css"  href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css"  href="style.css" />
-  </head>
+		<!-- CSS -->
+		<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href="zenpen/css/style.css" rel="stylesheet">
+		<link href="zenpen/css/fonts.css" rel="stylesheet">
+
+		<!-- LIBS -->
+		<script src="zenpen/js/libs/head.min.js"></script>
+		<script src="zenpen/js/libs/FileSaver.min.js"></script>
+		<script src="zenpen/js/libs/Blob.js"></script>
+		<script src="zenpen/js/libs/fullScreen.js"></script>
+	  </head>
   <body>
     <div class="container-fluid">
       <img id="loadingInfo" src="images/ajax-loader.gif" />
@@ -49,52 +59,71 @@
             </div>
           </div>
 
-          <!-- add file -->
-          <form class="form-horizontal">
-            <fieldset>
-              <legend>Add a new encrypted file</legend>
-              <!-- file name -->
-              <div class="control-group">
-                <label class="control-label" for="newFileName">Filename:</label>
-                <div class="controls">
-                  <input type="text" id="newFileName" class="span8" maxlength="70" />
-                </div>
-              </div>
-
-              <!-- password -->
-              <div class="control-group">
-                <label class="control-label" for="key">Password:</label>
-                <div class="controls">
-                  <input type="password" id="key" class="span8" />
-                </div>
-              </div>
-
-              <!-- password confirmation -->
-              <div class="control-group">
-                <label class="control-label" for="verify_key">Password confirmation:</label>
-                <div class="controls">
-                  <input type="password" id="verify_key" class="span8" />
-                </div>
-              </div>
-
-              <!-- file content -->
-              <div class="control-group">
-                <label class="control-label" for="fileContent">File content:</label>
-                <div class="controls">
-                  <textarea id="fileContent" class="span8" rows="10"></textarea>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <input type="button" id="createFile" class="btn btn-large btn-primary" value="Save" />
-                <input type="reset" id="resetFormButton" class="btn btn-large btn-danger" value="Clear" />
-              </div>
-            </fieldset>
-          </form>
         </div>
       </div>
     </div>
 
+    <!--editor-->
+    <div class='zen-editor'>
+      <div class="text-options">
+        <div class="options">
+          <span class="no-overflow">
+            <span class="lengthen ui-inputs">
+              <button class="url useicons">&#xe005;</button>
+              <input class="url-input" type="text" placeholder="Type or Paste URL here"/>
+              <button class="bold">b</button>
+              <button class="italic">i</button>
+              <button class="quote">&rdquo;</button>
+            </span>
+          </span>
+        </div>
+      </div>
+      
+      <div class='buttons'>
+        <!-- password -->
+        <div class="control-group">
+          <label class="control-label" for="key">Password:</label>
+          <div class="controls">
+            <input type="password" id="key" />
+          </div>
+        </div>
+
+        <!-- password confirmation -->
+        <div class="control-group">
+          <label class="control-label" for="verify_key">Password confirmation:</label>
+          <div class="controls">
+            <input type="password" id="verify_key" />
+          </div>
+        </div><button id='saveFileButton' class='btn btn-large btn-success'>Save</button>
+        <button id='closeButton' class='btn btn-large btn-danger' id='cancelButton'>Close</button>
+      </div>
+      <section>
+        
+        <header contenteditable="true" class="header" id="newFileName">
+        </header>
+
+        <article contenteditable="true" class="content" id="fileContent">
+        </article>
+              
+
+
+      </section>
+    </div>
+		<!-- JS -->
+		<script type="text/javascript">
+			// Load required scripts.	
+			head.js( 
+				"zenpen/js/utils.js",
+				"zenpen/js/ui.js",
+				"zenpen/js/editor.js",
+	        	function(){
+	            	
+	            	// Initiate ZenPen
+	            	editor.init();
+	    			ui.init();
+	            }
+	        );
+    </script>
 
     <!-- Loading scripts at the end -->
     <!-- ui libs -->

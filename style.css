@@ -16,3 +16,13 @@ textarea{
   width:100%;
   height:200px;
 }
+
+.zen-editor{
+  display:none;
+}
+
+.buttons{
+  position:absolute;
+  right:5%;
+  top:50%;
+}

@@ -195,6 +195,7 @@ var createDirectory = function (client, parentDir, dirName) {
 
 var createFile = function (client, path, fileName, content, key) {
   var encryptedContent = sjcl.encrypt(key, content);
+  console.log(client, path, fileName, content, key);
   client.writeFile(path + "/" + fileName, encryptedContent, function (error, result) {
     if (error) {
       displayDropboxError(error);
@@ -206,4 +207,11 @@ var createFile = function (client, path, fileName, content, key) {
       });
     }
   });
+}
+
+var resetEditor = function(titleEntity, contentEntity){
+  titleEntity.text("Name of the file");
+  contentEntity.text("Content of the file");
+  $('#key').val("");
+  $('#verify_key').val("");
 }
