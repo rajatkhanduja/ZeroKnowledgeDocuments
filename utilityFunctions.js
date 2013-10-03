@@ -158,11 +158,35 @@ var folderClicked = function (client, path) {
   listDirInHTML(client, path);
 }
 
+var getFileNameFromPath = function(path){
+  var partsOfPath = path.split("/");
+  return partsOfPath[partsOfPath.length - 1];
+}
+
 var fileClicked = function (client, path) {
   password = window.prompt("Enter password");
+  
   client.readFile(path, function (error, result) {
-    console.log(sjcl.decrypt(password, result));
+    if (error !== null){
+      displayError(error);
+    }
+
+    var decryptedText = sjcl.decrypt(password, result);
+
+    // Handle errors here
+    setEditorValues(getFileNameFromPath(path), decryptedText);
+    showEditor();
   });
+}
+
+var hideEditor = function(){
+  $('.zen-editor').hide(); 
+  $('.container-fluid').show();
+}
+var showEditor = function(){
+  $('.zen-editor').show();
+  $('.container-fluid').hide();
+
 }
 
 var removePathElement = function (client) {
@@ -209,9 +233,25 @@ var createFile = function (client, path, fileName, content, key) {
   });
 }
 
-var resetEditor = function(titleEntity, contentEntity){
-  titleEntity.text("Name of the file");
-  contentEntity.text("Content of the file");
+var getEditorTitleEntity = function(){
+  return $('#newFileName');
+}
+
+var getEditorContentEntity = function(){
+  return $('#fileContent');
+}
+
+var setEditorValues = function(title, content){
+  var titleEntity = getEditorTitleEntity();
+  var contentEntity = getEditorContentEntity();
+
+  titleEntity.text(title);
+  contentEntity.html(content);
+}
+
+
+var resetEditor = function(){
+  setEditorValues("Name of the file", "Content of the file");
   $('#key').val("");
   $('#verify_key').val("");
 }

@@ -16,15 +16,14 @@ $('#parentDirectory').hide();
 
 
 $('#newFile').click(function () {
-  resetEditor($('#newFileName'), $('#fileContent'));
-  $('.zen-editor').show();
-  $('.container-fluid').hide();
+  resetEditor();
+  showEditor();
 });
 
 $('#closeButton').click(function(){
-  resetEditor($('#newFileName'), $('#fileContent'));
-  $('.zen-editor').hide(); 
-  $('.container-fluid').show();});
+  resetEditor();
+  hideEditor();
+});
 
 $('#newDir').click(function () {
   Modal.prompt({
