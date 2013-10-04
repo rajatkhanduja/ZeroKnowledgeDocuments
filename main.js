@@ -28,6 +28,7 @@ $('#closeButton').click(function(){
 $('#newDir').click(function () {
   Modal.prompt({
     title: "Create directory",
+    input_type:"text",
     optional: {
       affirmative_label: "Create"
     },
