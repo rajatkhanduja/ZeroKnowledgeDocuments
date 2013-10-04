@@ -4,7 +4,7 @@ tpl.evaluate = function (tmpl_name, tmpl_data) {
   var that = this;
 
   if (! that.cache[tmpl_name]) {
-    var tmpl_dir = '/templates';
+    var tmpl_dir = 'templates';
     var tmpl_url = tmpl_dir + '/' + tmpl_name + '.html';
 
     var tmpl_string;
