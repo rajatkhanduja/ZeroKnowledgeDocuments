@@ -43,7 +43,12 @@ $('#newDir').click(function () {
 });
 
 $('#saveFileButton').click(function () {
-  createFile(client, pathString(), $('#newFileName').text(), $('#fileContent').html(), $('#key').val());
+  if ($('#key').val() === $('#verify_key').val()){
+    createFile(client, pathString(), $('#newFileName').text(), $('#fileContent').html(), $('#key').val());
+  }
+  else{
+    displayError("Passwords don't match");
+  }
 });
 
 $('#reloadDir').click(function () {

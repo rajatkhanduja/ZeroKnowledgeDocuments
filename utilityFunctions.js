@@ -227,7 +227,7 @@ var createFile = function (client, path, fileName, content, key) {
     else {
       Modal.info({
         title: "File saved",
-        message: "'" + fileName + "' has been saved. Please remember your password: " + key
+        message: "'" + fileName + "' has been saved. Please remember your password. There is no way to recover the file if the password is lost/forgotten." 
       });
     }
   });
