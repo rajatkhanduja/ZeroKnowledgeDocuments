@@ -164,18 +164,33 @@ var getFileNameFromPath = function(path){
 }
 
 var fileClicked = function (client, path) {
-  password = window.prompt("Enter password");
-  
-  client.readFile(path, function (error, result) {
-    if (error !== null){
-      displayError(error);
+  password = Modal.prompt({
+    title: "Enter password",
+    input_type:"password",
+    optional:{
+      affirmative_label: "Decrypt"
+    },
+    success:function(password){
+      inLoadingState();
+      client.readFile(path, function (error, result) {
+        if (error !== null){
+          displayError(error);
+        }
+        
+        try{
+          var decryptedText = sjcl.decrypt(password, result);
+        } catch(exception){
+          displayError("Either the password entered is incorrect or the data has been corrupted. Please try again.");
+          doneLoading();
+          return;
+        }
+        
+        doneLoading();
+
+        setEditorValues(getFileNameFromPath(path), decryptedText);
+        showEditor();
+      });
     }
-
-    var decryptedText = sjcl.decrypt(password, result);
-
-    // Handle errors here
-    setEditorValues(getFileNameFromPath(path), decryptedText);
-    showEditor();
   });
 }
 
