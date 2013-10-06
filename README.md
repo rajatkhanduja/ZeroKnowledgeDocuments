@@ -52,3 +52,4 @@ This project makes use of the code/library provided by the following :-
 * [Stanford Javascript Crypto Library (SJCL)](crypto.stanford.edu/sjcl/)
 * [Zenpen](https://github.com/tholman/zenpen)
 * [Underscore.js](http://underscorejs.org/)
+* [Dropbox-js](https://github.com/dropbox/dropbox-js)
