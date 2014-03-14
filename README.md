@@ -23,7 +23,7 @@ Example use case(s)
 Demo
 ----
 
-The [demo](https://rajatkhanduja.github.io/ZeroKnowledgeDocuments/) first requires the user to connect to Dropbox and provide the necessary permissions, after which, the user can do the following in `Dropbox/Apps/ZeroKnowledgeDocuments/` folder :-
+The [demo](https://zkdocs.5apps.com/) first requires the user to connect to Dropbox and provide the necessary permissions, after which, the user can do the following in `Dropbox/Apps/ZeroKnowledgeDocuments/` folder :-
 
  
 * Create and browse directories
