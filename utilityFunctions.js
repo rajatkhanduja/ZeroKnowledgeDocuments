@@ -16,7 +16,7 @@ var displayDropboxError = function (error) {
     // Get the user through the authentication flow again.
 
     // Rajat : currently requesting user to refresh.
-    displayError("Looks like you token expired. Please refresh.");
+    displayError("Looks like your token has expired. Please refresh.");
     break;
 
   case Dropbox.ApiError.NOT_FOUND:
@@ -65,7 +65,6 @@ var listDir = function (client, path, func) {
     }
   }
 
-  console.log(dirResults);
   if (dirResults[path] !== undefined) {
     operateOnList(dirResults[path], func);
     doneLoading();
@@ -153,7 +152,6 @@ var addFileDetailsToTable = function (client, file) {
 }
 
 var folderClicked = function (client, path) {
-  console.log("folder clicked");
   addPathElement(path.split("/").pop(), client);
   listDirInHTML(client, path);
 }
@@ -206,7 +204,6 @@ var showEditor = function(){
 
 var removePathElement = function (client) {
   var nav = $('#navigation');
-  console.log("Entered");
   if (nav.children().length > 1) {
     nav.children().last().remove(); // This changes the length
   }
@@ -215,7 +212,6 @@ var removePathElement = function (client) {
     $('#parentDirectory').hide();
   }
   pathElements.pop();
-  console.log(pathString());
   listDirInHTML(client, pathString());
 }
 
@@ -234,7 +230,6 @@ var createDirectory = function (client, parentDir, dirName) {
 
 var createFile = function (client, path, fileName, content, key) {
   var encryptedContent = sjcl.encrypt(key, content);
-  console.log(client, path, fileName, content, key);
   client.writeFile(path + "/" + fileName, encryptedContent, function (error, result) {
     if (error) {
       displayDropboxError(error);

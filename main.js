@@ -53,7 +53,6 @@ $('#saveFileButton').click(function () {
 });
 
 $('#reloadDir').click(function () {
-  console.log("Reloading...");
   delete dirResults[pathString()];
   listDirInHTML(client, pathString());
 });
